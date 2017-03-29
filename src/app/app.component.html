@@ -1,0 +1,51 @@
+<h1>
+  {{title}}
+</h1>
+<h2>Beer Kegs:</h2>
+<ul>
+  <li *ngFor = "let currentKeg of kegs">{{currentKeg.brand}}
+    <ul>
+      <li>${{currentKeg.price}}</li>
+      <li>{{currentKeg.alcoholContent}}%</li>
+      <li [class]="kegLevel(currentKeg)">pints remaining: {{currentKeg.pint}}
+        <button (click)="sellPint(currentKeg)">Sell</button>
+        {{currentKeg.alert}}
+      </li>
+      <button (click)="editKeg(currentKeg)">Edit</button>
+    </ul>
+  </li>
+
+  <h3>High alcohol content</h3>
+  <span *ngFor = "let currentKeg of kegs">
+    <span *ngIf="currentKeg.alcoholContent > 5"><p>{{currentKeg.brand}}</p></span>
+  </span>
+  <h3>Low alcohol content</h3>
+  <span *ngFor = "let currentKeg of kegs">
+    <span *ngIf="currentKeg.alcoholContent <= 5"><p>{{currentKeg.brand}}</p></span>
+  </span>
+
+
+  <div *ngIf="selectedKeg">
+    {{selectedKeg.brand}}
+    <label>Enter brand</label>
+    <input [(ngModel)]="selectedKeg.brand">
+    <label>Enter price</label>
+    <input [(ngModel)]="selectedKeg.price">
+    <label>Enter alcohol content</label>
+    <input [(ngModel)]="selectedKeg.alcoholContent">
+    <button (click)="finishedEditing()">Submit</button>
+  </div>
+</ul>
+<button (click)="addTap()">Add Keg</button>
+<div *ngIf="addingTap">
+  <h3>Add a beer keg</h3>
+  <label>Enter brand</label>
+  <input [(ngModel)]="brand">
+  <label>Enter price</label>
+  <input [(ngModel)]="price">
+  <label>Enter alcohol content</label>
+  <input [(ngModel)]="alcoholContent">
+  <button (click)="finishedAdding(brand,price,alcoholContent)">Submit</button>
+</div>
+
+{{totalSells}}
