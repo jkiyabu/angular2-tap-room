@@ -11,7 +11,10 @@ export class AppComponent {
   selectedKeg = null;
   epicodus = null;
   alert = "";
-  totalSells = 0;
+  currentTime = new Date();
+  hours = this.currentTime.getHours();
+  minutes = this.currentTime.getMinutes();
+  time = this.currentTime.getHours();
 
   kegs: Keg[] = [
     new Keg('Bells Two Hearted', 100, 5, 3),
@@ -40,13 +43,25 @@ export class AppComponent {
   sellPint(currentKeg) {
     if (currentKeg.pint > 0) {
       currentKeg.pint =  currentKeg.pint - 1;
-      this.totalSells = this.totalSells + currentKeg.pintPrice;
+      currentKeg.totalSells =   currentKeg.totalSells + currentKeg.pintPrice;
+      currentKeg.profit = currentKeg.totalSells - currentKeg.price;
+
     } else {
       alert(currentKeg.brand + " is empty!" )
     }
 
     if(currentKeg.pint <= 10) {
       currentKeg.alert = "Atention!!!"
+    }
+
+
+  }
+
+  profitColor(currentKeg) {
+    if (currentKeg.totalSells < currentKeg.price) {
+      return "red";
+    } else {
+      return "green";
     }
   }
 
@@ -60,11 +75,22 @@ export class AppComponent {
     }
   }
 
+  happyHour(currentKeg) {
+    if (this.hours >= 16) {
+      for (var keg of this.kegs)
+      keg.pintPrice = keg.pintPrice - 2;
+    }
+    return true;
+  }
+
 
 }
 
 export class Keg {
   pint: number = 124;
   alert: string = "";
+  totalSells: number = 0;
+  profit: number = 0;
+
   constructor(public brand: string, public price: number, public alcoholContent: number, public pintPrice: number) {}
 }

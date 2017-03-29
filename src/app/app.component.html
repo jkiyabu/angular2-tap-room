@@ -2,15 +2,22 @@
   {{title}}
 </h1>
 <h2>Beer Kegs:</h2>
+<h3>{{hours}}:{{minutes}}</h3>
+<h2 *ngIf="happyHour()">Happy Hour!</h2>
 <ul>
   <li *ngFor = "let currentKeg of kegs">{{currentKeg.brand}}
+
     <ul>
-      <li>${{currentKeg.price}}</li>
-      <li>{{currentKeg.alcoholContent}}%</li>
+      <li>Price per keg ${{currentKeg.price}}</li>
+      <li>Price per pint: ${{currentKeg.pintPrice}}</li>
+      <li>Alcohol Content {{currentKeg.alcoholContent}}%</li>
+      <li [class]="profitColor(currentKeg)">Total sells: ${{currentKeg.totalSells}}</li>
       <li [class]="kegLevel(currentKeg)">pints remaining: {{currentKeg.pint}}
         <button (click)="sellPint(currentKeg)">Sell</button>
         {{currentKeg.alert}}
       </li>
+      <li>Profit: {{currentKeg.profit}}</li>
+
       <button (click)="editKeg(currentKeg)">Edit</button>
     </ul>
   </li>
@@ -47,5 +54,3 @@
   <input [(ngModel)]="alcoholContent">
   <button (click)="finishedAdding(brand,price,alcoholContent)">Submit</button>
 </div>
-
-{{totalSells}}
