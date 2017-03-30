@@ -1,0 +1,13 @@
+<p>
+  edit-keg works!
+</p>
+<div *ngIf="childSelectedKeg">
+  {{childSelectedKeg.brand}}
+  <label>Enter brand</label>
+  <input [(ngModel)]="childSelectedKeg.brand">
+  <label>Enter price</label>
+  <input [(ngModel)]="childSelectedKeg.price">
+  <label>Enter alcohol content</label>
+  <input [(ngModel)]="childSelectedKeg.alcoholContent">
+  <button (click)="doneButtonClicked()">Submit</button>
+</div>

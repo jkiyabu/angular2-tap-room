@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Keg } from './keg.model';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Tap Room';
-  addingTap = null;
   selectedKeg = null;
+  addingTap = null;
   epicodus = null;
   alert = "";
   currentTime = new Date();
@@ -22,23 +23,21 @@ export class AppComponent {
     new Keg('Narragansett', 175, 7, 6)
   ];
 
-  finishedAdding(brand, price, alcoholContent, pintPrice) {
-    this.kegs.push(new Keg(brand, price, alcoholContent, pintPrice));
-    this.addingTap = null;
+  finishedEditing() {
+    this.selectedKeg = null;
   }
 
-  addTap() {
-    this.addingTap = true;
 
+  addKeg(newKegFromChild: Keg) {
+      this.kegs.push(newKegFromChild);
   }
 
   editKeg(currentKeg) {
     this.selectedKeg = currentKeg;
   }
 
-  finishedEditing() {
-    this.selectedKeg = null;
-  }
+// Done------------------------------
+  
 
   sellPint(currentKeg) {
     if (currentKeg.pint > 0) {
@@ -53,44 +52,5 @@ export class AppComponent {
     if(currentKeg.pint <= 10) {
       currentKeg.alert = "Atention!!!"
     }
-
-
   }
-
-  profitColor(currentKeg) {
-    if (currentKeg.totalSells < currentKeg.price) {
-      return "red";
-    } else {
-      return "green";
-    }
-  }
-
-  kegLevel(currentKeg) {
-    if (currentKeg.pint <= 62 && currentKeg.pint > 10) {
-      return "yellow";
-    } else if (currentKeg.pint <= 10) {
-      return "red";
-    } else {
-      return "green";
-    }
-  }
-
-  happyHour(currentKeg) {
-    if (this.hours >= 16) {
-      for (var keg of this.kegs)
-      keg.pintPrice = keg.pintPrice - 2;
-    }
-    return true;
-  }
-
-
-}
-
-export class Keg {
-  pint: number = 124;
-  alert: string = "";
-  totalSells: number = 0;
-  profit: number = 0;
-
-  constructor(public brand: string, public price: number, public alcoholContent: number, public pintPrice: number) {}
 }

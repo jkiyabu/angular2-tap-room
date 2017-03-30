@@ -1,0 +1,11 @@
+<!-- <div *ngIf="addingTap"> -->
+  <h3>Add a beer keg</h3>
+  <label>Enter brand</label>
+  <input #brand>
+  <label>Enter price</label>
+  <input #price>
+  <label>Enter alcohol content</label>
+  <input #alcoholContent>
+  <button (click)="finishedAdding(brand.value, price.value, alcoholContent.value); brand.value=''; price.value=''; alcoholContent.value=''">Submit</button>
+<!-- </div> -->
+<!-- <button (click)="addTap()">Add Keg</button> -->

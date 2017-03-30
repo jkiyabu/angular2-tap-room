@@ -1,0 +1,30 @@
+<p>
+  keg-list works!
+</p>
+
+<li *ngFor = "let currentKeg of childKegList">{{currentKeg.brand}}
+
+  <ul>
+    <li>Price per keg ${{currentKeg.price}}</li>
+    <li>Price per pint: ${{currentKeg.pintPrice}}</li>
+    <li>Alcohol Content {{currentKeg.alcoholContent}}%</li>
+    <li [class]="profitColor(currentKeg)">Total sells: ${{currentKeg.totalSells}}</li>
+    <li [class]="kegLevel(currentKeg)">pints remaining: {{currentKeg.pint}}
+      <button (click)="sellPint(currentKeg)">Sell</button>
+      {{currentKeg.alert}}
+    </li>
+    <li>Profit: {{currentKeg.profit}}</li>
+
+    <button (click)="editButtonHasBeenClicked(currentKeg)">Edit</button>
+  </ul>
+</li>
+<br>
+<select (change)="onChange($event.target.value)">
+  <option value="allKegs" selected="selected">All Beers</option>
+  <option value="highAlcohol">High Alcohol</option>
+  <option value="lowAlcohol">Low Alcohol</option>
+</select>
+
+<span *ngFor = "let currentKeg of childKegList | alcoholContent:filterByAlcoholContent">
+  <p>{{currentKeg.brand}}</p>
+</span>

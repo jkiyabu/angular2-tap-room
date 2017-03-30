@@ -4,10 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { KegListComponent } from './keg-list/keg-list.component';
+import { EditKegComponent } from './edit-keg/edit-keg.component';
+import { AddKegComponent } from './add-keg/add-keg.component';
+import { alcoholContentPipe } from './alcoholContent.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    KegListComponent,
+    EditKegComponent,
+    AddKegComponent,
+    alcoholContentPipe
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
   "description": "",
   "main": "",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/jkiyabu/angular2-tap-room",
   "ignore": [
     "**/.*",
     "node_modules",
