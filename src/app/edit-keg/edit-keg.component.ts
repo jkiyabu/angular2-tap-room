@@ -10,6 +10,7 @@ export class EditKegComponent {
   @Input() childSelectedKeg: Keg;
   @Output() doneButtonClickedSender = new EventEmitter();
 
+  
 
   doneButtonClicked() {
     this.doneButtonClickedSender.emit();

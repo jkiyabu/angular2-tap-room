@@ -10,11 +10,15 @@ import { Keg } from '../keg.model';
 export class KegListComponent {
   @Input() childKegList: Keg[];
   @Output() clickSender = new EventEmitter();
-
+  @Output() clickSender2 = new EventEmitter();
   filterByAlcoholContent: string = "allKegs";
 
   onChange(optionFromMenu) {
     this.filterByAlcoholContent = optionFromMenu;
+  }
+
+  sellButtonHasBeenClicked(currentKeg: Keg[]) {
+    this.clickSender2.emit(currentKeg);
   }
 
   editButtonHasBeenClicked(currentKeg: Keg[]) {
@@ -38,6 +42,8 @@ export class KegListComponent {
       return "green";
     }
   }
+
+
 
 
 }

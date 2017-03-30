@@ -26,6 +26,9 @@ export class AppComponent {
   finishedEditing() {
     this.selectedKeg = null;
   }
+  finishedSelling() {
+    this.selectedKeg = null;
+  }
 
 
   addKeg(newKegFromChild: Keg) {
@@ -36,8 +39,11 @@ export class AppComponent {
     this.selectedKeg = currentKeg;
   }
 
+  // sellPint(currentKeg) {
+  //   this.selectedKeg = currentKeg;
+  // }
+
 // Done------------------------------
-  
 
   sellPint(currentKeg) {
     if (currentKeg.pint > 0) {
@@ -52,5 +58,7 @@ export class AppComponent {
     if(currentKeg.pint <= 10) {
       currentKeg.alert = "Atention!!!"
     }
+
   }
+
 }
