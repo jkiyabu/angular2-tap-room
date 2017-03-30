@@ -1,14 +1,17 @@
 <!-- <div *ngIf="addingTap"> -->
+<div class="form-group">
   <h3>Add a beer keg</h3>
   <label>Enter brand</label>
   <input #brand>
-  <br>
+</div>
+<div class="form-group">
   <label>Enter price</label>
   <input #price>
-  <br>
+</div>
+<div class="form-group">
   <label>Enter alcohol content</label>
   <input #alcoholContent>
-  <br>
+</div>
   <button (click)="finishedAdding(brand.value, price.value, alcoholContent.value); brand.value=''; price.value=''; alcoholContent.value=''">Submit</button>
 <!-- </div> -->
 <!-- <button (click)="addTap()">Add Keg</button> -->
